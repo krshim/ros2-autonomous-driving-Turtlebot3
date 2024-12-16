@@ -99,12 +99,13 @@ micro sd카드 리더기를 이용하여 라즈베리파이의 micro sd카드를
 >>```
 wlan0: 의 내용 중에서 inet옆의 IP주소를 확인한다.
 + #### [L]
-라즈베리파이를 재부팅한 후 로컬 컴퓨터에서 라즈베리파이 원격접속을 진행한다.
+>라즈베리파이를 재부팅한 후 로컬 컴퓨터에서 라즈베리파이 원격접속을 진행한다.
 >`ssh {라즈베리파이 사용자}@{라즈베리파이의 IP주소}`
 > 이후 로컬컴퓨터와 같은 버전의 ROS2-foxy를 설치한다.
-> ```
-sudo apt install python3-argcomplete python3-colcon-common-extensions libboost-system-dev build-essential
-sudo apt install ros-foxy-hls-lfcd-lds-driver
-sudo apt install ros-foxy-turtlebot3-msgs
-sudo apt install ros-foxy-dynamixel-sdk
-sudo apt install libudev-dev
+>>```
+>>sudo apt install python3-argcomplete python3-colcon-common-extensions libboost-system-dev build-essential
+>>sudo apt install ros-foxy-hls-lfcd-lds-driver
+>>sudo apt install ros-foxy-turtlebot3-msgs
+>>sudo apt install ros-foxy-dynamixel-sdk
+>>sudo apt install libudev-dev
+>>```
