@@ -108,22 +108,3 @@ sudo apt install ros-foxy-hls-lfcd-lds-driver
 sudo apt install ros-foxy-turtlebot3-msgs
 sudo apt install ros-foxy-dynamixel-sdk
 sudo apt install libudev-dev
-
-
-
-
-
-sudo apt update
-
-
-
-라즈베리파이
-
-
-
-라즈베리파이가 부팅이 완료되면 'ifconfig'를 입력하여  ip주소를 확인한다.
-
-
-
-로컬 컴퓨터에서 터미널을 열고 'ssh {라즈베리파이 id}@{라즈베리파이 사용 ip주소}'를 입력하여 원격으로 라즈베리파이에 접속한다.
-
