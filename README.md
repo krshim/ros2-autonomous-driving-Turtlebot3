@@ -48,10 +48,82 @@ colcon build --symlink-install # 파일이 복사되지 않고 소스 파일을 
 
 터틀봇3 도메인 아이디를 설정한다.( .bashrc 파일을 에디터로 열어서 중복되지 않게 설정을 확인한다.)
 ```
-echo 'export ROS_DOMAIN_ID=30 #TURTLEBOT3' >> ~/.bashrc$ source ~/.bashrc
+echo export ROS_DOMAIN_ID=30 >> ~/.bashrc (echo export ROS_DOMAIN_ID=30를 (.bashrc파일의 가장 아래에 추가)
+source ~/.bashrc
 ```
 
 ### 3-2. TurtleBot3 SBC Setup
 
-터틀봇3 의 라즈베리파이4에는 Ubuntu 20.04 server 64-bit 를 설치해서 구동을 한다. (https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/)
+이 작업에서 사용하는 SBC는 라즈베리파이4B이다. 로컬 컴퓨터에서 하는 작업은 [L] 로 표기하고 SBC(라즈베리파이)에서 하는 작업은 [S]로 표기하겠다.
+
+1. Ubuntu 20.04 server 64-bit 를 설치해서 구동 한다.
+#### [L]
+공식 ubuntu 사이트(https://releases.ubuntu.com/focal/)에서 Ubuntu 20.04.6 LTS (Focal Fossa) - Server install image를 다운받는다. Desktop image에서 다운받지 않았기 때문에 그래픽사용자 인터페이스가 설치되지 않는다. 저장공간을 확보하기 위해 이러한 방식을 사용하였다.
+
+micro sd카드 리더기를 이용하여 라즈베리파이의 micro sd카드를 로컬 컴퓨터에 연결한다.
+
+그 후 로컬 컴퓨터에 설치한 Ubuntu 이미지를 라즈비안을 통해 micro sd카드에 설치한다.
+
+2. 라즈베리파이의 마이크로 sd카드에 ubuntu 20.04를 설치하였으면 라즈베리피이에 마이크로 sd카드를 삽입한다. 그 후 라즈베리파이에 HDMI와 키보드, 마우스 등 입력장치를 연결하기 전 전원을 인가한다.(입력장치를 전원을 먼저 인가하게 되면 입력장치가 인식이 되지 않는다.) 라즈베리파이의 초기 아이디는 `pi`이고 초기 암호는 `raspberry`이다.
+집에서 혼자 작업한다면, 초기설정을 사용해도 무리가 없다. 하지만 외부로 인터넷을 연결하여 사용한다면 보안상의 이유로 비밀번호를 변경해주어야 한다.
++ #### [S]
+>nano 편집기를 이용하여 인터넷을 설정할 수 있는 .yaml 파일을 수정한다.
+>>```
+>>sudo nano /etc/netplan/50-cloud-init.yaml
+>>```
+>파일을 열고 `WIFI_SSID:`를 `내 와이파이 이름:`으로 변경한다.
+>비밀번호는 아래와 같이 작성한다.
+>>```
+>>password:{와이파이 비밀번호}
+>>```
+>작성을 완료한 후 `ctrl+s(저장)`, `ctrl+c(종료)`
+>아래 코드를 입력하여 업데이트 설정을 변경한다.
+>>```
+>>sudo nano /etc/apt/apt.conf.d/20auto-upgrades
+>>```
+>nano 편집기가 열리면 아래의 코드를 추가한다.
+>>```
+>>APT::Periodic::Update-Package-Lists "0";
+>>APT::Periodic::Unattended-Upgrade "0";
+>>```
+>작성을 완료한 후 `ctrl+s(저장)`, `ctrl+c(종료)`
+>라즈베리파이를 재부팅합니다.
+>>```
+>>reboot
+>>```
+>net-tools를 설치하고 라즈베리파이의 현재 IP를 확인하기 위해 아래 명령어를 입력한다.
+>>```
+>>sudo apt update
+>>sudo apt install net-tools
+>>ifconfig
+>>```
+wlan0: 의 내용 중에서 inet옆의 IP주소를 확인한다.
++ #### [L]
+라즈베리파이를 재부팅한 후 로컬 컴퓨터에서 라즈베리파이 원격접속을 진행한다.
+>`ssh {라즈베리파이 사용자}@{라즈베리파이의 IP주소}`
+> 이후 로컬컴퓨터와 같은 버전의 ROS2-foxy를 설치한다.
+> ```
+sudo apt install python3-argcomplete python3-colcon-common-extensions libboost-system-dev build-essential
+sudo apt install ros-foxy-hls-lfcd-lds-driver
+sudo apt install ros-foxy-turtlebot3-msgs
+sudo apt install ros-foxy-dynamixel-sdk
+sudo apt install libudev-dev
+
+
+
+
+
+sudo apt update
+
+
+
+라즈베리파이
+
+
+
+라즈베리파이가 부팅이 완료되면 'ifconfig'를 입력하여  ip주소를 확인한다.
+
+
+
+로컬 컴퓨터에서 터미널을 열고 'ssh {라즈베리파이 id}@{라즈베리파이 사용 ip주소}'를 입력하여 원격으로 라즈베리파이에 접속한다.
 
