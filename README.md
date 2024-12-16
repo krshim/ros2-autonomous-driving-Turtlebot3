@@ -1,4 +1,4 @@
-# Ubuntu20.04 / ROS2-foxy / TurtleBot3 <details open="open">
+# Ubuntu20.04 / ROS2-foxy
 #### (따라하기 쉽게 작성하는 것을 목표로 하였습니다. (https://github.com/krshim/ros2-study)를 참고하세요.)
 <summary>목차</summary>
   <ol>
