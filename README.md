@@ -57,7 +57,7 @@ source ~/.bashrc
 이 작업에서 사용하는 SBC는 라즈베리파이4B이다. 로컬 컴퓨터에서 하는 작업은 [L] 로 표기하고 SBC(라즈베리파이)에서 하는 작업은 [S]로 표기하겠다.
 
 1. Ubuntu 20.04 server 64-bit 를 설치해서 구동 한다.
-#### [L]
+
 공식 ubuntu 사이트(https://releases.ubuntu.com/focal/)에서 Ubuntu 20.04.6 LTS (Focal Fossa) - Server install image를 다운받는다. Desktop image에서 다운받지 않았기 때문에 그래픽사용자 인터페이스가 설치되지 않는다. 저장공간을 확보하기 위해 이러한 방식을 사용하였다.
 
 micro sd카드 리더기를 이용하여 라즈베리파이의 micro sd카드를 로컬 컴퓨터에 연결한다.
@@ -87,7 +87,7 @@ micro sd카드 리더기를 이용하여 라즈베리파이의 micro sd카드를
 >>APT::Periodic::Unattended-Upgrade "0";
 >>```
 >작성을 완료한 후 `ctrl+s(저장)`, `ctrl+c(종료)`
->라즈베리파이를 재부팅합니다.
+>라즈베리파이를 재부팅한다.
 >>```
 >>reboot
 >>```
